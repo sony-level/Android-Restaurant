@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name" translatable="false">AndroidERestaurant</string>
+
+    <!-- page d'accceuil -->
+    <string name="home_page" translatable="false">Bienvenue</string>
+</resources>
