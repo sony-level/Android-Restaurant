@@ -98,7 +98,7 @@ class BasketActivity : ComponentActivity(){
                 Text(item.count.toString(),
                     Modifier.align(alignment = Alignment.CenterVertically))
                 Button(
-                    colors = ButtonColors(contentColor = Color.White, containerColor = Color.Red, disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray),
+                    //colors = ButtonColors(contentColor = Color.White, containerColor = Color.Red, disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray),
                     onClick = {
                         // delete item and redraw view
                         Basket.current(context).delete(item, context)

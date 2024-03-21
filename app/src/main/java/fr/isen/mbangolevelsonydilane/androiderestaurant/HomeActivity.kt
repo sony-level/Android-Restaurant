@@ -75,9 +75,6 @@ class HomeActivity : ComponentActivity(),AppUi {
         intent.putExtra(CategoryActivity.CATEGORY_EXTRA_KEY,dishType)
         startActivity(intent)
         Toast.makeText(this, "Voici mon toast", Toast.LENGTH_LONG).show()
-
-        // Handle dish type press event
-        // You can implement your logic here
     }
 
 }

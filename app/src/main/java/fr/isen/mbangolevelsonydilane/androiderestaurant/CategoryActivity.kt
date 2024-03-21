@@ -184,8 +184,7 @@ fun dishRow(dish: Dish) {
             Spacer(modifier = Modifier.weight(1f))
         }
     }
-    // }
-    // }
+
 }
 
 

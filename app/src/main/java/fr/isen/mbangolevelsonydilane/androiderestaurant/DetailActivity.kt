@@ -89,7 +89,7 @@ class DetailActivity : ComponentActivity() {
                             val intent = Intent(context, BasketActivity::class.java)
                             context.startActivity(intent)
                         },
-                        colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
+                       // colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
                     ) {
                         Icon(
                             imageVector = Icons.Default.ShoppingCart, // Remplacez ici par l'icône du panier
@@ -170,7 +170,7 @@ class DetailActivity : ComponentActivity() {
                                 totalPrice = quantity * unitPrice}
                             },
                             modifier = Modifier.padding(8.dp),
-                            colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
+                            //colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
 
                         ) {
                             Icon(
@@ -184,6 +184,7 @@ class DetailActivity : ComponentActivity() {
                             modifier = Modifier.padding(top=16.dp),
                             style = MaterialTheme.typography.bodyLarge
                         )
+
                         // Bouton pour incrémenter la quantité
                         IconButton(
                             onClick = {
@@ -191,7 +192,8 @@ class DetailActivity : ComponentActivity() {
                                 count.value=quantity
                                 totalPrice = quantity * unitPrice},
                             modifier = Modifier.padding(8.dp),
-                            colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
+
+                            //colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
 
                         ) {
                             Icon(
@@ -224,7 +226,7 @@ class DetailActivity : ComponentActivity() {
                             }
                             Toast.makeText(context, "added to basket", Toast.LENGTH_SHORT).show()
                         },
-                        colors = ButtonColors(contentColor = Color.White, containerColor = Color.Red, disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
+                       // colors = ButtonColors(contentColor = Color.White, containerColor = Color.Red, disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
                     ) {
                         Text(text = "Add Basket")
                     }
@@ -236,6 +238,8 @@ class DetailActivity : ComponentActivity() {
 
         Log.d("lifeCycle", "Detail Activity - OnCreate")
     }
+
+
 
     companion object{
         val DISH_EXTRA_KEY ="DISH_EXTRA_KEY"
