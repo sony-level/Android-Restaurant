@@ -2,5 +2,7 @@
     <string name="app_name" translatable="false">AndroidERestaurant</string>
 
     <!-- page d'accceuil -->
-    <string name="home_page" translatable="false">Bienvenue</string>
+    <string name="menu_starter" translatable="false">Entrées</string>
+    <string name="menu_main" translatable="false">Plats</string>
+    <string name="menu_dessert" translatable="false">Desserts</string>
 </resources>
