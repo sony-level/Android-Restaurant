@@ -82,29 +82,53 @@ class HomeActivity : ComponentActivity(),AppUi {
 @Composable
 fun Greeting(menu:AppUi) {
     val isHeaderFixed = remember { mutableStateOf(true) }
-    Column (
+    Column(
         modifier = Modifier
-            .padding(12.dp)
-    ){
+            .padding(0.dp)
+    ) {
         Header()
     }
-
-    Spacer(modifier = Modifier.height(26.dp))
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Spacer(modifier = Modifier.height(70.dp))
-        Image(painterResource(R.drawable.restaurant),contentDescription = null,
+        Box(
             modifier = Modifier
-                .size(200.dp)
-                .background(Color.DarkGray) )
+                .fillMaxWidth()
+                .height(200.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "Bienvenue",
+                    color = Color.Blue,
+                    style = MaterialTheme.typography.headlineSmall
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.restaurant),
+                    contentDescription = null,
+                    modifier = Modifier.size(120.dp)
+                )
+            }
+        }
         Spacer(modifier = Modifier.height(16.dp))
         CustomButton(type = DishType.STARTER, menu)
-        Divider(color = Color.Red, thickness = 2.dp)
+        Spacer(modifier = Modifier.height(16.dp))
+        Divider(color = Color.Red, thickness = 1.dp)
+        Spacer(modifier = Modifier.height(16.dp))
         CustomButton(type = DishType.MAIN, menu)
-        Divider(color = Color.Red, thickness = 2.dp)
+        Spacer(modifier = Modifier.height(16.dp))
+        Divider(color = Color.Red, thickness = 1.dp)
+        Spacer(modifier = Modifier.height(16.dp))
         CustomButton(type = DishType.DESSERT, menu)
     }
-
 }
+
 @Composable fun CustomButton(type: DishType, menu: AppUi) {
     TextButton(onClick = { menu.Display(type)  }) {
         Text(type.title())
@@ -116,14 +140,14 @@ fun Header() {
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp)
-            .background(Color.Black)
+            .background(Color.Blue)
     ) {
         // Contenu du header qui reste fixe
         Text(
-            text = "Restaurant",
+            text = "Welcome to my Restaurant",
             modifier = Modifier
                 .align(Alignment.Center),
-            color = Color.White// Couleur du texte du header
+            color = Color.White  // Couleur du texte du header
         )
     }
 }
