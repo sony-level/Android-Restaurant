@@ -1,9 +1,6 @@
 package fr.isen.mbangolevelsonydilane.androiderestaurant
 
 
-
-
-
 import android.app.DownloadManager.Request
 
 import android.os.Bundle
@@ -64,9 +61,14 @@ import fr.isen.mbangolevelsonydilane.androiderestaurant.ui.theme.AndroidERestaur
 class CategoryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val type = (intent.getSerializableExtra(CATEGORY_EXTRA_KEY)  as? DishType) ?: DishType.STARTER
+        val type =
+            (intent.getSerializableExtra(CATEGORY_EXTRA_KEY) as? DishType) ?: DishType.STARTER
         setContent {
-            Homepage(type)
+            val category = remember {
+                mutableStateOf<Category?>(null)
+            }
+            postData(type.title(), category)
+            Homepage(type, category)
         }
         Log.d("lifeCycle", "Menu Activity - OnCreate")
     }
@@ -85,44 +87,64 @@ class CategoryActivity : ComponentActivity() {
         Log.d("lifeCycle", "Menu Activity - onDestroy")
         super.onDestroy()
     }
-    companion object{
-        val CATEGORY_EXTRA_KEY ="CATEGORY_EXTRA_KEY"
+
+    companion object {
+        val CATEGORY_EXTRA_KEY = "CATEGORY_EXTRA_KEY"
+    }
+
+    private fun postData(currentCategory: String, category: MutableState<Category?>) {
+
+        val queue = Volley.newRequestQueue(this)
+
+        val params = JSONObject()
+        params.put(Shop.id_shop, 1)
+        val request = JsonObjectRequest(com.android.volley.Request.Method.POST,
+            Shop.URL,
+            params,
+            { response ->
+                Log.d("request", response.toString(2))
+                val result = GsonBuilder().create()
+                    .fromJson(response.toString(), CategoryResults::class.java)
+                val filteredResult = result.data.first { category ->
+                    category.name == currentCategory
+                }
+                category.value = filteredResult
+                Log.d("parse", "")
+            },
+            {
+                Log.e("request", it.toString())
+            })
+        queue.add(request)
     }
 }
 
 @Composable
-fun Homepage(type: DishType) {
-    Column (
-        modifier = Modifier
-            .padding(12.dp)
-    ){
+fun Homepage(type: DishType, category: MutableState<Category?>) {
+    Column(
+        modifier = Modifier.padding(12.dp)
+    ) {
         Header()
     }
     Spacer(modifier = Modifier.height(156.dp))
-    val category = remember {
-        mutableStateOf<Category?>(null)
-    }
+
     Spacer(modifier = Modifier.height(46.dp))
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(type.title())
-        LazyColumn{
-            category.value?.let{
-                items(it.items){
-                    dishRow(it)
+        LazyColumn {
+            category.value?.let {
+                items(it.items) {dish ->
+                    DishRow(dish)
                 }
 
             }
         }
     }
-    postData(type,category)
 }
 
 
 @Composable
-fun dishRow(dish: Dish) {
+fun DishRow(dish: Dish) {
     val context = LocalContext.current
-    LazyColumn {
-    items(listOf(dish)) {
     Card(
         modifier = Modifier
             .padding(top = 50.dp)
@@ -134,9 +156,7 @@ fun dishRow(dish: Dish) {
                 intent.putExtra(DetailActivity.DISH_OBJECT, dish)
                 intent.putExtra(DetailActivity.IMAGE_URI_EXTRA_KEY, imageUri)
                 context.startActivity(intent)
-            },
-        shape = RoundedCornerShape(8.dp),
-        border = BorderStroke(2.dp, Color.White)
+            }, shape = RoundedCornerShape(8.dp), border = BorderStroke(2.dp, Color.White)
     ) {
         Column(
             modifier = Modifier.padding(bottom = 16.dp)
@@ -148,15 +168,14 @@ fun dishRow(dish: Dish) {
 
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(dish.images.firstOrNull())
-                        .build(),
+                        .data(dish.images.firstOrNull()).build(),
                     contentDescription = null,
                     placeholder = painterResource(R.drawable.restaurant),
                     error = painterResource(R.drawable.restaurant),
                     contentScale = ContentScale.FillHeight,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(2.dp) // Hauteur fixe pour l'image
+                        .height(64.dp) // Hauteur fixe pour l'image
                         .clip(RoundedCornerShape(10))
                         .padding(end = 16.dp)
                 )
@@ -166,13 +185,9 @@ fun dishRow(dish: Dish) {
             Column {
                 // Nom du plat
                 Text(
-                    text = dish.name,
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        color = Color.Red,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    text = dish.name, style = MaterialTheme.typography.bodySmall.copy(
+                        color = Color.Red, fontSize = 18.sp, fontWeight = FontWeight.Bold
+                    ), modifier = Modifier.padding(bottom = 24.dp)
                 )
                 // Prix du plat
                 Text(
@@ -182,38 +197,9 @@ fun dishRow(dish: Dish) {
             }
             // Espace pour étirer les éléments à gauche
             Spacer(modifier = Modifier.weight(1f))
-                }
-            }
         }
     }
 }
 
 
 
-@Composable
-fun postData(type:DishType,category:MutableState<Category?>){
-    val currentCategory = type.title()
-    val context = LocalContext.current
-    val queue = Volley.newRequestQueue(context)
-
-    val params = JSONObject()
-    params.put(Shop.id_shop,1)
-    val request = JsonObjectRequest(
-        com.android.volley.Request.Method.POST,
-        Shop.URL,
-        params,
-        { response->
-            Log.d("request",response.toString(2))
-            val result= GsonBuilder().create().fromJson(response.toString(),CategoryResults::class.java)
-            val filteredResult= result.data.first{category->
-                category.name==currentCategory
-            }
-            category.value=filteredResult
-            Log.d("parse","")
-        },
-        {
-            Log.e("request",it.toString())
-        }
-    )
-    queue.add(request)
-}

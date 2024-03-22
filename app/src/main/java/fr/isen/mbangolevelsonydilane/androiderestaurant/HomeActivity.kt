@@ -95,7 +95,7 @@ fun Greeting(menu:AppUi) {
         Image(painterResource(R.drawable.restaurant),contentDescription = null,
             modifier = Modifier
                 .size(200.dp)
-                .background(Color.Gray) )
+                .background(Color.DarkGray) )
         Spacer(modifier = Modifier.height(16.dp))
         CustomButton(type = DishType.STARTER, menu)
         Divider(color = Color.Red, thickness = 2.dp)
@@ -116,7 +116,7 @@ fun Header() {
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp)
-            .background(Color.Yellow)
+            .background(Color.Black)
     ) {
         // Contenu du header qui reste fixe
         Text(

@@ -89,12 +89,12 @@ class DetailActivity : ComponentActivity() {
                             val intent = Intent(context, BasketActivity::class.java)
                             context.startActivity(intent)
                         },
-                       // colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
+
                     ) {
                         Icon(
                             imageVector = Icons.Default.ShoppingCart, // Remplacez ici par l'icône du panier
                             contentDescription = "Add to Cart",
-                            tint = Color.White
+                            tint = Color.DarkGray
                         )
                     }
                 }
@@ -163,13 +163,13 @@ class DetailActivity : ComponentActivity() {
                     Modifier
                         .align(Alignment.CenterHorizontally)
                     ) {
-                        IconButton(
+                        Button(
                             onClick = {  if (quantity > 0){
                                 quantity--
                                 count.value=quantity
                                 totalPrice = quantity * unitPrice}
                             },
-                            modifier = Modifier.padding(8.dp),
+                            modifier = Modifier.padding(2.dp),
                             //colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
 
                         ) {
@@ -186,12 +186,12 @@ class DetailActivity : ComponentActivity() {
                         )
 
                         // Bouton pour incrémenter la quantité
-                        IconButton(
+                        Button(
                             onClick = {
                                 quantity++
                                 count.value=quantity
                                 totalPrice = quantity * unitPrice},
-                            modifier = Modifier.padding(8.dp),
+                            modifier = Modifier.padding(2.dp),
 
                             //colors = IconButtonColors( contentColor = Color.White,containerColor = Color.Red,disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
 

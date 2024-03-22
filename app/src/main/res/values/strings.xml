@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">AndroidERestaurant</string>
+    <string name="app_name" translatable="false">DroidERestaurant</string>
 
     <!-- page d'accceuil -->
     <string name="menu_starter" translatable="false">Entrées</string>
