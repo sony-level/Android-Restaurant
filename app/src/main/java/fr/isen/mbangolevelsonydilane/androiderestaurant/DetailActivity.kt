@@ -50,6 +50,8 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import android.widget.Toast
+import androidx.viewpager2.widget.ViewPager2
+
 class DetailActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +64,7 @@ class DetailActivity : ComponentActivity() {
             val count = remember {
                 mutableIntStateOf(1)
             }
+
 
             Column (
                 modifier = Modifier
@@ -174,7 +177,7 @@ class DetailActivity : ComponentActivity() {
 
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Refresh,
+                                imageVector = Icons.Default.Add,
                                 contentDescription = "Decrease Quantity",
                                 tint = Color.White
                             )
@@ -197,7 +200,7 @@ class DetailActivity : ComponentActivity() {
 
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Add,
+                                imageVector = Icons.Default.Refresh,
                                 contentDescription = "Increase Quantity",
                                 tint = Color.White
                             )
@@ -207,7 +210,7 @@ class DetailActivity : ComponentActivity() {
                             text = "Total : ${totalPrice.toString()} £",
                             style = MaterialTheme.typography.bodyLarge.copy(
                                 color = Color.Red,
-                                fontSize = 18.sp,
+                                fontSize = 19.sp,
                                 fontWeight = FontWeight.Bold
                             ))
 
@@ -228,7 +231,7 @@ class DetailActivity : ComponentActivity() {
                         },
                        // colors = ButtonColors(contentColor = Color.White, containerColor = Color.Red, disabledContainerColor = Color.Gray, disabledContentColor = Color.Gray)
                     ) {
-                        Text(text = "Add Basket")
+                        Text(text = "Add basket")
                     }
                     Spacer(modifier = Modifier.weight(1f))
                 }
@@ -247,4 +250,5 @@ class DetailActivity : ComponentActivity() {
 
     }
 }
+
 
