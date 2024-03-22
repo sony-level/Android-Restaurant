@@ -54,7 +54,7 @@ class DetailActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val dish = intent.getSerializableExtra(DetailActivity.DISH_EXTRA_KEY)  as? Dish
+        val dish = intent.getSerializableExtra(DetailActivity.DISH_OBJECT)  as? Dish
         val imageUri = intent.getStringExtra(DetailActivity.IMAGE_URI_EXTRA_KEY)
 
         setContent {
@@ -242,7 +242,7 @@ class DetailActivity : ComponentActivity() {
 
 
     companion object{
-        val DISH_EXTRA_KEY ="DISH_EXTRA_KEY"
+        val DISH_OBJECT ="DISH_OBJECT"
         val IMAGE_URI_EXTRA_KEY="IMAGE_URI_EXTRA_KEY"
 
     }

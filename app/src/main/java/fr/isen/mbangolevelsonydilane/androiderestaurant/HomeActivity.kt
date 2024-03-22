@@ -116,14 +116,14 @@ fun Header() {
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp)
-            .background(Color.Red)
+            .background(Color.Yellow)
     ) {
         // Contenu du header qui reste fixe
         Text(
             text = "Restaurant",
             modifier = Modifier
                 .align(Alignment.Center),
-            color = Color.White // Couleur du texte du header
+            color = Color.White// Couleur du texte du header
         )
     }
 }
@@ -155,89 +155,3 @@ fun GreetingPreview() {
 
 
 
-
-/**import android.os.Bundle
-import android.os.Message
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.ElevatedButton
-
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-
-import androidx.compose.runtime.Composable
-
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
-
-import fr.isen.mbangolevelsonydilane.androiderestaurant.ui.theme.AndroidERestaurantTheme
-
-
-class HomeActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-
-        setContent {
-            AndroidERestaurantTheme {
-                // A surface container using the 'background' color from the theme
-               MyApp()
-                }
-            }
-        }
-
-
-    @Composable
-    private fun MyApp(names: List<String>, modifier: Modifier = Modifier) {
-        Surface(modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            Column(modifier = modifier) {
-                names.forEach { name ->
-                    Greeting(name = name)
-                }
-            }
-
-    }
-}
-
-
-
-
-
-@Composable
-fun Greeting(name: String , modifier: Modifier = Modifier ) {
-    Surface(color = MaterialTheme.colorScheme.primary , modifier = Modifier.padding(vertical = 4.dp , horizontal = 8.dp)){
-        Row(modifier = Modifier.padding(24.dp)) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(text = "Hello ")
-                Text(text = name)
-            }
-            ElevatedButton(
-                onClick = {  }
-            ) {
-                Text("Show more")
-            }
-        }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AndroidERestaurantTheme {
-      Greeting(name = "level")
-    }
-}
-
-
-**/

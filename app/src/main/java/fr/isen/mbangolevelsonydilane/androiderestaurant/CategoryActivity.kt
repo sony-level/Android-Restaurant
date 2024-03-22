@@ -121,8 +121,8 @@ fun Homepage(type: DishType) {
 @Composable
 fun dishRow(dish: Dish) {
     val context = LocalContext.current
-    //LazyColumn {
-    //items(listOf(dish)) {
+    LazyColumn {
+    items(listOf(dish)) {
     Card(
         modifier = Modifier
             .padding(top = 50.dp)
@@ -131,7 +131,7 @@ fun dishRow(dish: Dish) {
             .clickable {
                 val imageUri = dish.images.firstOrNull()
                 val intent = Intent(context, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.DISH_EXTRA_KEY, dish)
+                intent.putExtra(DetailActivity.DISH_OBJECT, dish)
                 intent.putExtra(DetailActivity.IMAGE_URI_EXTRA_KEY, imageUri)
                 context.startActivity(intent)
             },
@@ -139,7 +139,7 @@ fun dishRow(dish: Dish) {
         border = BorderStroke(2.dp, Color.White)
     ) {
         Column(
-            modifier = Modifier.padding(bottom=16.dp)
+            modifier = Modifier.padding(bottom = 16.dp)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -156,7 +156,7 @@ fun dishRow(dish: Dish) {
                     contentScale = ContentScale.FillHeight,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp) // Hauteur fixe pour l'image
+                        .height(2.dp) // Hauteur fixe pour l'image
                         .clip(RoundedCornerShape(10))
                         .padding(end = 16.dp)
                 )
@@ -182,9 +182,10 @@ fun dishRow(dish: Dish) {
             }
             // Espace pour étirer les éléments à gauche
             Spacer(modifier = Modifier.weight(1f))
+                }
+            }
         }
     }
-
 }
 
 
