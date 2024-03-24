@@ -50,14 +50,14 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import android.widget.Toast
-import androidx.viewpager2.widget.ViewPager2
+//import androidx.viewpager2.widget.ViewPager2 as ViewPager2
 
 class DetailActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val dish = intent.getSerializableExtra(DetailActivity.DISH_OBJECT)  as? Dish
-        val imageUri = intent.getStringExtra(DetailActivity.IMAGE_URI_EXTRA_KEY)
+        val dish = intent.getSerializableExtra(DISH_OBJECT)  as? Dish
+        val imageUri = intent.getStringExtra(IMAGE_URI_EXTRA_KEY)
 
         setContent {
             val context = LocalContext.current

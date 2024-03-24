@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AndroidERestaurant" parent="android:Theme.Material.Light.DarkActionBar" />
+    <style name="Theme.AndroidERestaurant" parent="android:Theme.Material.Light.DarkActionBar" >
+        <!-- Couleurs -->
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryDark">#303F9F</item>
+        <item name="colorAccent">#FF4081</item>
+
+        <!-- Typographie -->
+        <item name="android:fontFamily">sans-serif-light</item>
+
+        <!-- Autres attributs de style -->
+        <!-- ... -->
+    </style>
 </resources>
