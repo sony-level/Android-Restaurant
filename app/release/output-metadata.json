@@ -16,7 +16,6 @@
       "outputFile": "app-release.apk"
     }
   ],
-<<<<<<< HEAD
   "elementType": "File",
   "baselineProfiles": [
     {
@@ -35,7 +34,4 @@
     }
   ],
   "minSdkVersionForDexing": 21
-=======
-  "elementType": "File"
->>>>>>> origin/master
 }
